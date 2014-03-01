@@ -27,12 +27,13 @@ end
 post '/sign-in' do
 	@user=User.where(username: params[:username]).first
 	if @user.password==params[:password]
-		flash[:notice]="You've Successfully Singed In"
+		flash[:notice]="You've Successfully Signed In"
 		redirect "/"
 	else
-		flash[:alert]="Usernaeme/Password Combination Incorrect"
-		redirect "/login-failed"
+		flash[:alert]="Username/Password Combination Incorrect"
+		redirect "/"
 		erb :sign_in
+		erb :layout
 	end
 end
 
