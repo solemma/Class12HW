@@ -26,11 +26,11 @@ end
 
 post '/sign-in' do
 	@user=User.where(username: params[:username]).first
-	if @user.password==params[:password]
+	if @user && @user.password==params[:password]
 		flash[:notice]="You've Successfully Signed In"
 		redirect "/"
 	else
-		flash[:alert]="Username/Password Combination Incorrect"
+		flash[:notice]="Username/Password Combination Incorrect"
 		redirect "/"
 		erb :sign_in
 		erb :layout
